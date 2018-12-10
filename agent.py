@@ -44,6 +44,8 @@ class Agent(object):
         """Show internal distributions of arms"""
         x = np.linspace(0, 1, 100)
         fig, ax = plt.subplots(1, 1)
+        ax.set_title('Beta Posterior PDF')
+        ax.set_ylabel('PDF')
         for arm in range(self.n):
             theta = self.theta_estimates[arm]
             ax.plot(x, beta(theta[0], theta[1]).pdf(x), label="Arm {}".format(arm))

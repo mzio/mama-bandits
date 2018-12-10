@@ -6,7 +6,7 @@ from scipy.stats import norm
 
 class DataSimulator(object): 
     
-    def __init__(self, n, size, seed=41):
+    def __init__(self, n, size, seed=None):
         """Specify beginning Bernoulli p's"""
         self.n = n  # number of arms
         self.size = size  # size of generated data set
@@ -26,7 +26,8 @@ class DataSimulator(object):
         return self.thetas
         
     def generate_data(self):
-        np.random.seed(self.seed)
+        if self.seed is not None:
+            np.random.seed(self.seed)
         for i in range(self.n):
             self.rewards[i] = np.random.binomial(1, self.thetas[i], 
                                                  self.size)
@@ -39,10 +40,7 @@ class DataSimulator(object):
     def show_data(self, arm):
         return self.rewards[arm]
     
-    def reset(self, thetas=None):
-        if thetas:
-            self.init_thetas(thetas=thetas, random=False)
-        else:
-            self.init_thetas(thetas=None, random=True)
+    def reset(self, thetas):
+        self.init_thetas(thetas=thetas, random=False)
         self.generate_data()
         self.df = self.get_dataframe()

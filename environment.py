@@ -60,14 +60,18 @@ class TrainingEnv(object):
         self.scores = scores / experiments
         return self.scores
     
-    def plot_results(self):
-        scores = self.scores
-        plt.subplot(1, 1, 1)
-        plt.title(self.label)
-        plt.plot(scores, '.')
-        plt.ylabel('Average Reward')
-        plt.legend([a.id for a in self.agents], loc='center left', bbox_to_anchor=(1, 0.5))
-        plt.show() 
+    def plot_results(self, title=''):
+       scores = self.scores
+       fig = plt.figure()
+       ax = plt.subplot(111)
+       ax.set_title('Multi-Armed Bandit Rewards: {}'.format(title))
+       ax.plot(scores, '.')
+       box = ax.get_position()
+       ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
+       ax.set_ylabel('Average Reward')
+       ax.legend([a.id for a in self.agents], loc='center left', 
+                 bbox_to_anchor=(1, 0.5))
+       plt.show() 
 
 
 class PredictionMarketEnv(object):
@@ -114,9 +118,6 @@ class PredictionMarketEnv(object):
                         arm_samples.append(np.random.normal(params[0], params[1]**0.5))
                     action = np.argmax(arm_samples)
                     reward, max_reward = self.bandit.pull(action)
-                    print('ARM SAMPLES')
-                    print(action)
-                    print(arm_samples)
                     for i, agent in enumerate(self.agents):
                         agent.current_action = action
                         agent.observe(reward, max_reward, update=True)
@@ -127,16 +128,25 @@ class PredictionMarketEnv(object):
     
     def plot_results(self, market=True):
         scores = self.scores
-        plt.subplot(1, 1, 1)
-        plt.title(self.label)
+        fig = plt.figure()
+        ax = plt.subplot(111)
         if market:
-            plt.plot(scores, 'b.')
-            plt.ylabel('Average Reward')
-            plt.legend(['Prediction Market'], loc='center left', bbox_to_anchor=(1, 0.5))
+            ax.set_title('Multi-Armed Bandit Market Reward')
+            ax.plot(scores, 'b.')
+            box = ax.get_position()
+            ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
+            ax.set_ylabel('Average Reward')
+            ax.legend(['Prediction Market'], loc='center left', 
+                      bbox_to_anchor=(1, 0.5))
+            plt.show() 
         else:
-            plt.plot(scores, '.')
-            plt.ylabel('Average Reward')
-            plt.legend([a.id for a in self.agents], loc='center left', 
-                       bbox_to_anchor=(1, 0.5))
+            ax.set_title('Multi-Armed Bandit Rewards')
+            ax.plot(scores, '.')
+            box = ax.get_position()
+            ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
+            ax.set_ylabel('Average Reward')
+            ax.legend(['Prediction Market'], loc='center left', 
+                      bbox_to_anchor=(1, 0.5))
+            plt.show() 
 
     
