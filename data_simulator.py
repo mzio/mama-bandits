@@ -1,3 +1,9 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from scipy.stats import beta 
+from scipy.stats import norm 
+
 class DataSimulator(object): 
     
     def __init__(self, n, size, seed=41):
