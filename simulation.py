@@ -51,8 +51,8 @@ def train_new_learners(market_thetas, single_thetas, hidden_thetas, learners=5,
         market_learners.append(agent_market)
         single_learners.append(agent_single)
     
-    show_rewards(market_learners)
-    show_rewards(single_learners)
+    show_rewards(market_learners, 'rewards_market.png')
+    show_rewards(single_learners, 'rewards_single.png')
 
 
 
@@ -139,7 +139,7 @@ def run_simulation(thetas, experiments=1, n_agents=3, n_arms=5,
 
 
 
-run_simulation(thetas=[0.45, 0.45, 0.45, 0.35, 0.55], display=False)
+run_simulation(thetas=[0.45, 0.45, 0.45, 0.35, 0.55], display=True)
 
 
 

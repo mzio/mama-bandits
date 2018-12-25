@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt 
 
-def show_rewards(agents):
+def show_rewards(agents, fname=None):
     """Visualize cumulative rewards for all agents"""
     fig = plt.figure()
     ax = plt.subplot(111)
@@ -11,9 +11,11 @@ def show_rewards(agents):
         agent.show_rewards()
     ax.legend([a.id for a in agents], loc='center left', 
              bbox_to_anchor=(1, 0.5))
+    if fname: plt.savefig(fname)
     plt.show()
+    
 
-def show_regrets(agents):
+def show_regrets(agents, fname=None):
     """Visualize cumulative rewards for all agents"""
     fig = plt.figure()
     ax = plt.subplot(111)
@@ -24,4 +26,6 @@ def show_regrets(agents):
         agent.show_regret()
     ax.legend([a.id for a in agents], loc='center left', 
              bbox_to_anchor=(1, 0.5))
+    if fname: plt.savefig(fname)
     plt.show()
+    
