@@ -1,10 +1,10 @@
-![beta_posteriors.png](beta_posteriors.png)
-
 # Prediction Markets for Multi-agent Multi-armed Bandits 
 
 Final project submission for CS 136: Economics and Computation, taught by Professor David Parkes in Fall 2018.  
 
 (:muscle: :muscle: :muscle: :slot_machine:) x n
+
+![beta_posteriors.png](beta_posteriors.png)
 
 ## Some Quick Context  
 We explore the use of a prediction market (specifically a log-scoring automated market maker) to create a generative algorithm using Thompson Sampling in a multi-agent multi-armed bandit setting. Multi-armed bandits are an interesting class of problems where one wants to maximize rewards by picking any one of n possible stochastic options. An agent starts out not knowing anything, and by exploring the different options builds an internal idea of which options lead to higher rewards. As a toy model, this can generalize to various decision-making settings in the real world. However, the real world also poses additional hurdles, such as not having infinite freedom to explore, and additional opportunities, such as the existence of other agents with different experiences trying to do the same thing. We thus provide the starting code for a testing environment to see if agents can learn from the experiences of others through a prediction market.  
