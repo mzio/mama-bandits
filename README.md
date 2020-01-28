@@ -1,4 +1,7 @@
 # Prediction Markets for Multi-agent Multi-armed Bandits 
+
+![beta_posteriors.png](beta_posteriors.png)
+
 Final project submission for CS 136: Economics and Computation, taught by Professor David Parkes in Fall 2018.  
 
 (:muscle: :muscle: :muscle: :slot_machine:) x n
